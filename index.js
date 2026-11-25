@@ -11,7 +11,7 @@
 import http from "node:http"
 import { Bot, webhookCallback } from "grammy"
 import { registerCommands } from "./src/commands.js"
-
+import { registerDownloader } from "./src/downloader.js"
 const token = process.env.TELEGRAM_BOT_TOKEN
 if (!token) {
   console.error("TELEGRAM_BOT_TOKEN is missing. Open Telegram, talk to @BotFather, send /newbot, and set the token it gives you as an environment variable.")
@@ -23,6 +23,7 @@ const bot = new Bot(token)
 
 registerCommands(bot)
 
+registerDownloader(bot)
 bot.catch((err) => {
   console.error("[bot] error while handling an update:", err.error ?? err)
 })
