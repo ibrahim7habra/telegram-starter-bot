@@ -17,7 +17,8 @@ HEADERS = {
 }
 def opts(folder): return {
 "outtmpl": os.path.join(folder, "%(id)s.%(ext)s"),
-"format": "best[ext=mp4][filesize<50M]/best[ext=mp4]/best",
+"format": "best[vcodec!=none][acodec!=none][ext=mp4]/best[vcodec!=none][ext=mp4]/best[vcodec!=none]/best",
+"format_sort": ["vcodec:h264", "res", "ext:mp4:m4a"],
 "noplaylist": True,
 "quiet": True,
 "no_warnings": True,
